@@ -18,4 +18,4 @@ type `docker-compose up`
   
 ## Configuration:
 Default hosting port is 8080 you can change it in docker-compose.yml nginx image configuguration.  
-On default configs site is hosted on 0.0.0.0 (publicly accessible), if you want to host site only localy change it in docker-compose.yml nginx image ports configuration starting ports with 127.0.0.1: for example: `127.0.0.1:8080:80` . 
+On default configs site is hosted on 0.0.0.0 (publicly accessible), if you want to host site only localy change it in docker-compose.yml nginx image ports configuration starting ports with localhost: for example: `localhost:8080:80` . 
