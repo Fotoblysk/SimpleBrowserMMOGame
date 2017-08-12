@@ -21,12 +21,16 @@ Default hosting port is 80 you can change it in docker-compose.yml nginx image c
 On default configs site is hosted on 0.0.0.0 (publicly accessible), if you want to host site only localy change it in docker-compose.yml nginx image ports configuration starting ports with localhost: for example: `localhost:80:80` . 
 
 ## Runing tests
-Supported testing for now:
-  backend:
-    with pep8 
-      `cd backend/app
-      pep8 .`
-  frontend:
-    with eslint 
-      `cd frontend/app/src/
-       ../node_modules/.bin/eslint $(find -name "*.jsx")`
+Supported testing for now:  
+
+  backend:  
+    with pep8  
+      `cd backend/app  
+      pep8 .`  
+
+  frontend:  
+    with eslint  
+      `cd frontend/app/  
+       npm install .  
+       cd frontend/app/src/  
+       ../node_modules/.bin/eslint $(find -name "*.jsx")`  
