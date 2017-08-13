@@ -1,5 +1,10 @@
 # SimpleBrowserMMOGame
 
+## Build status:
+Site state:[![Build Status](http://195.181.223.71:8080/buildStatus/icon?job=Run-site)](http://195.181.223.71:8080/job/Run-site/)  
+CI most recent build(for dev && master): [![Build Status](http://195.181.223.71:8080/buildStatus/icon?job=site-ci)](http://195.181.223.71:8080/job/site-ci/)  
+Continuous delivery(and master CI): [![Build Status](http://195.181.223.71:8080/buildStatus/icon?job=site-ci-cd)](http://195.181.223.71:8080/job/site-ci-cd/)  
+  
 ## To install:
 instal npm `sudo apt-get install npm` (on debian based linux).  
   
