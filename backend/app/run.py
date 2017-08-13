@@ -19,7 +19,7 @@ async def login(request):
     print("password: " + password)
     redisRaw = redis.get("CRED:user:" + login)
     if redisRaw is None:
-        return web.json_response(data={"status":"No"})
+        return web.json_response(data={"status": "No"})
     redisData = json.loads(redisRaw.decode())
     dataPassword = redisData['password']
     print("redisRaw" + str(redisData))
@@ -27,9 +27,11 @@ async def login(request):
     if password == dataPassword:
         tocken = jwt.encode(data, secret, algorithm='HS256')
         print(tocken)
-        return web.json_response(data={"status":"Ok", "tocken": tocken.decode()})
+        return web.json_response(
+            data={"status": "Ok", "tocken": tocken.decode()}
+        )
     else:
-        return web.json_response(data={"status":"Bad"})
+        return web.json_response(data={"status": "Bad"})
 
 async def register(request):
     data = (await request.json())

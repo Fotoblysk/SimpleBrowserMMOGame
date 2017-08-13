@@ -1,5 +1,5 @@
-import React, { Component } from 'react';
-import { authStore } from '../stores/authStore.jsx';
+import React, { Component } from "react";
+import { authStore } from "../stores/authStore.jsx";
 
 class LoggingWindow extends Component {
 
@@ -10,11 +10,11 @@ class LoggingWindow extends Component {
 
   onSubmitClick = (e) => {
     e.preventDefault();
-    fetch('/api/login', {
-      method: 'POST',
+    fetch("/api/login", {
+      method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        "Accept": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         login: this.state.login,
@@ -23,20 +23,20 @@ class LoggingWindow extends Component {
     }).then( (response) => {
       return response.json()
     }).then( (response) => {
-        if(response.status ===  "Ok"){
-          authStore.dispatch({type: "", jwt: response.tocken});
-          this.setState({
-            resp: response.status,
-            jwt: authStore.getState().jwt
-          });
-        }else{
-          authStore.dispatch({type: "", jwt: ""});
-          this.setState({
-            resp: response.status,
-            jwt: authStore.getState().jwt
-          });
-        }
-  });
+      if(response.status ===  "Ok"){
+        authStore.dispatch({type: "", jwt: response.tocken});
+        this.setState({
+          resp: response.status,
+          jwt: authStore.getState().jwt
+        });
+      }else{
+        authStore.dispatch({type: "", jwt: ""});
+        this.setState({
+          resp: response.status,
+          jwt: authStore.getState().jwt
+        });
+      }
+    });
   }
 
   onLoginChange = (e) => {

@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import './App.css';
-import Banner from './comp/Banner.jsx';
-import NaviBar from './comp/NaviBar.jsx';
-import LoggingWindow from './comp/LoggingWindow.jsx';
-import RegisterWindow from './comp/RegisterWindow.jsx';
-import AboutWindow from './comp/AboutWindow.jsx';
+import React, { Component } from "react";
+import "./App.css";
+import Banner from "./comp/Banner.jsx";
+import NaviBar from "./comp/NaviBar.jsx";
+import LoggingWindow from "./comp/LoggingWindow.jsx";
+import RegisterWindow from "./comp/RegisterWindow.jsx";
+import AboutWindow from "./comp/AboutWindow.jsx";
 
 class App extends Component {
   constructor(props) {

@@ -1,7 +1,11 @@
-import React, { Component } from 'react';
-import '../css/NaviBar.css';
+import React, { Component } from "react";
+import "../css/NaviBar.css";
+import PropTypes from "prop-types";
 
 class NaviBar extends Component {
+  static propTypes = {
+    stateValue: PropTypes.func
+  };
   onHomeClick = () => {
     this.props.stateValue("home");
   }

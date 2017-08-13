@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 
 class RegisterWindow extends Component {
 
   onSubmitClick = (e) => {
     e.preventDefault();
-    fetch('/api/register', {
-      method: 'POST',
+    fetch("/api/register", {
+      method: "POST",
       headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json',
+        "Accept": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify({
         login: this.state.login,
@@ -38,15 +38,15 @@ class RegisterWindow extends Component {
 
   render() {
     return (
-		 <form onSubmit={this.onSubmitClick}>
-				Login:<br />
-				<input type="text" name="login" onChange={this.onLoginChange} /><br />
-				Email:<br />
-				<input type="text" name="email" onChange={this.onEmailChange} /><br />
-				Password:<br />
-				<input type="password" name="password" onChange={this.onPasswordChange} /><br />
+      <form onSubmit={this.onSubmitClick}>
+        Login:<br />
+        <input type="text" name="login" onChange={this.onLoginChange} /><br />
+        Email:<br />
+        <input type="text" name="email" onChange={this.onEmailChange} /><br />
+        Password:<br />
+        <input type="password" name="password" onChange={this.onPasswordChange} /><br />
         <input type="submit" value="Submit" />
-			</form>
+      </form>
     );
   }
 }
