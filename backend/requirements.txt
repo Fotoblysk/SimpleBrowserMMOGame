@@ -1,0 +1,5 @@
+gunicorn
+pyjwt
+aiohttp
+aiodns
+redis
