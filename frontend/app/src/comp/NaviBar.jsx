@@ -1,46 +1,28 @@
 import React, { Component } from "react";
 import "../css/NaviBar.css";
-import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 class NaviBar extends Component {
-  static propTypes = {
-    stateValue: PropTypes.func
-  };
-  onHomeClick = () => {
-    this.props.stateValue("home");
-  }
-
-  onLoginClick = () => {
-    this.props.stateValue("login");
-  }
-
-  onRegisterClick = () => {
-    this.props.stateValue("register");
-  }
-
-  onAboutClick = () => {
-    this.props.stateValue("about");
-  }
 
   render() {
     return (
       <div className="navi-bar">
         &nbsp;
-        <div className="inline" onClick={this.onHomeClick}>
+        <Link to={"/"} className="supress-link-style inline">
           <span className="link">Home</span>
-        </div>
+        </Link>
         &nbsp;
-        <div className="inline" onClick={this.onLoginClick}>
+        <Link to={"/login"} className="supress-link-style inline">
           <span className="link">Login</span>
-        </div>
+        </Link>
         &nbsp;
-        <div className="inline" onClick={this.onRegisterClick}>
+        <Link to={"/register"} className="supress-link-style inline">
           <span className="link">Register</span>
-        </div>
+        </Link>
         &nbsp;
-        <div className="inline" onClick={this.onAboutClick}>
+        <Link to={"/about"} className="supress-link-style inline">
           <span className="link">About</span>
-        </div> 
+        </Link> 
         &nbsp;
       </div>
     );
