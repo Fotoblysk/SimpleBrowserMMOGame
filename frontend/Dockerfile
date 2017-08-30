@@ -4,14 +4,16 @@ FROM node:latest
 COPY ./app /app/
 WORKDIR /app
 
+
+##Run dev
+#RUN npm install .
+#CMD [ "npm", "start"]
+
+# Run production app dependencies
 # Install app dependencies
 RUN npm install . && \
 chmod a+x /app/node_modules/.bin/react-scripts &&\
 npm run build && \
 npm install -g serve
-
-#Run dev
-#CMD [ "npm", "start"]
-
-# Run production app dependencies
+# Run
 CMD [ "serve", "-s", "build" ]
