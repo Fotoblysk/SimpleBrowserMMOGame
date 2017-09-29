@@ -2,6 +2,7 @@ version: '2'
 services:
   frontend:
     build: ./frontend
+    dockerfile: Dockerfile-prod
     env_file: ./frontend/config.env
     expose:
             - "80"
