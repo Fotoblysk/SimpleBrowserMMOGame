@@ -2,11 +2,10 @@ version: '2'
 services:
   frontend:
     build: ./frontend
+    dockerfile: Dockerfile-prod
     env_file: ./frontend/config.env
     expose:
             - "80"
-    volumes:
-            - ./frontend/app:/app
   backend:
     build: ./backend
     expose:
