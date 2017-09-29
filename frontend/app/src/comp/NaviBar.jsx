@@ -22,6 +22,10 @@ class NaviBar extends Component {
         &nbsp;
         <Link to={"/about"} className="supress-link-style inline">
           <span className="link">About</span>
+        </Link>
+        &nbsp;
+        <Link to={"/dashboard"} className="supress-link-style inline">
+          <span className="link">Dashboard</span>
         </Link> 
         &nbsp;
       </div>
