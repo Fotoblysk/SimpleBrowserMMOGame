@@ -8,7 +8,6 @@ import AboutWindow from "./comp/AboutWindow.jsx";
 import HomeWindow from "./comp/HomeWindow.jsx";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import Dashboard from "./comp/Dashboard.jsx";
-import { Button } from "react-bootstrap";
 
 
 class App extends Component {
