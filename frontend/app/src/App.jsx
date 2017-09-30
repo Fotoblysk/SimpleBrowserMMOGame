@@ -8,8 +8,6 @@ import AboutWindow from "./comp/AboutWindow.jsx";
 import HomeWindow from "./comp/HomeWindow.jsx";
 import {BrowserRouter as Router, Route} from "react-router-dom";
 import Dashboard from "./comp/Dashboard.jsx";
-//import Bootstrap from "react-bootstrap";
-import { Button } from "react-bootstrap";
 
 
 class App extends Component {
@@ -21,7 +19,6 @@ class App extends Component {
     return (
       <Router>
         <div className="App">
-          <Button />
           <Banner />
           <NaviBar />
           <Route exact path="/" component={HomeWindow} />
