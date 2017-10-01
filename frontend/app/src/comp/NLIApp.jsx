@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import Banner from "./Banner.jsx";
 import NaviBarNLI from "./NaviBarNLI.jsx";
 import LoggingWindow from "./LoggingWindow.jsx";
 import RegisterWindow from "./RegisterWindow.jsx";
@@ -23,7 +22,6 @@ class NLIApp extends Component {
   render() {
     return (
         <div>
-          <Banner />
           <NaviBarNLI />
 
           <Route exact path="/nli/" component={HomeWindow} />
