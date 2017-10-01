@@ -2,8 +2,9 @@ import React, { Component } from "react";
 import "../css/NaviBar.css";
 import { Navbar, Nav, NavItem } from "react-bootstrap";
 import { LinkContainer } from "react-router-bootstrap";
+import { logOut } from "../func/LoginTools.jsx";
 
-class NaviBar extends Component {
+class NaviBarLI extends Component {
 
   render() {
     return (
@@ -11,7 +12,7 @@ class NaviBar extends Component {
         <Navbar inverse collapseOnSelect>
             <Navbar.Header>
               <Navbar.Brand>
-                <LinkContainer eventKey={1} to={"/"}>
+                <LinkContainer eventKey={1} to={"/li"}>
                   <a>Browser Game</a>
                 </LinkContainer>
               </Navbar.Brand>
@@ -19,17 +20,11 @@ class NaviBar extends Component {
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav>
-                <LinkContainer to={"/login"}>
-                  <NavItem eventKey={2}>Login</NavItem>
+                <LinkContainer to={"/li/dashboard"}>
+                  <NavItem eventKey={1}>Dashboard</NavItem>
                 </LinkContainer>
-                <LinkContainer to={"/register"}>
-                  <NavItem eventKey={3}>Register</NavItem>
-                </LinkContainer>
-                <LinkContainer to={"/about"}>
-                  <NavItem eventKey={4}>About</NavItem>
-                </LinkContainer>
-                <LinkContainer to={"/dashboard"}>
-                  <NavItem eventKey={5}>Dashboard</NavItem>
+                <LinkContainer to={"/nli/"} onClick={logOut}>
+                  <NavItem eventKey={2}>LogOut</NavItem>
                 </LinkContainer>
               </Nav>
             </Navbar.Collapse>
@@ -39,4 +34,4 @@ class NaviBar extends Component {
   }
 }
 
-export default NaviBar;
+export default NaviBarLI;

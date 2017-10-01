@@ -1,11 +1,15 @@
 import React, { Component } from "react";
 import { authStore } from "../stores/authStore.jsx";
+import PropTypes from "prop-types";
 
 class LoggingWindow extends Component {
 
   constructor(props) {
     super(props);
-    this.state = {resp: "", jwt: authStore.getState().jwt};
+    let state = {resp: "", jwt: authStore.getState().jwt};
+    if(state.jwt !== "")
+      state.onTopOfFormMsg = "Your session has expired please log in to continue.";
+    this.state = state;
   }
 
   onSubmitClick = (e) => {
@@ -29,6 +33,7 @@ class LoggingWindow extends Component {
           resp: response.status,
           jwt: authStore.getState().jwt
         });
+        this.props.history.push("/li/dashboard");
       }else{
         authStore.dispatch({type: "", jwt: ""});
         this.setState({
@@ -67,5 +72,9 @@ class LoggingWindow extends Component {
     );
   }
 }
+
+LoggingWindow.propTypes = {
+  history: PropTypes.object.isRequired,
+};
 
 export default LoggingWindow;
