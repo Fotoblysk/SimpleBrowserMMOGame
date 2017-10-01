@@ -4,6 +4,7 @@ import {Route} from "react-router-dom";
 import Dashboard from "./Dashboard.jsx";
 import {isLogged} from "../func/LoginTools.jsx";
 import PropTypes from "prop-types";
+import SmallMap from "./SmallMap.jsx";
 
 
 class LIApp extends Component {
@@ -20,6 +21,7 @@ class LIApp extends Component {
       <div className="App">
         <NaviBarLI />
         <Route exact path="/li/dashboard" component={Dashboard} />
+        <Route exact path="/li/map" component={SmallMap} />
       </div>
     );
   }

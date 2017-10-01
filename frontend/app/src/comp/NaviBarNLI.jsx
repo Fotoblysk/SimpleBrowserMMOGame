@@ -19,14 +19,16 @@ class NaviBar extends Component {
             </Navbar.Header>
             <Navbar.Collapse>
               <Nav>
+                <LinkContainer to={"/nli/about"}>
+                  <NavItem eventKey={3}>About</NavItem>
+                </LinkContainer>
+              </Nav>
+              <Nav pullRight>
                 <LinkContainer to={"/nli/login"}>
-                  <NavItem eventKey={2}>Login</NavItem>
+                  <NavItem eventKey={1}>Login</NavItem>
                 </LinkContainer>
                 <LinkContainer to={"/nli/register"}>
-                  <NavItem eventKey={3}>Register</NavItem>
-                </LinkContainer>
-                <LinkContainer to={"/nli/about"}>
-                  <NavItem eventKey={4}>About</NavItem>
+                  <NavItem eventKey={2}>Register</NavItem>
                 </LinkContainer>
               </Nav>
             </Navbar.Collapse>

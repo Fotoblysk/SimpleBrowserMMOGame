@@ -23,6 +23,11 @@ class NaviBarLI extends Component {
                 <LinkContainer to={"/li/dashboard"}>
                   <NavItem eventKey={1}>Dashboard</NavItem>
                 </LinkContainer>
+                <LinkContainer to={"/li/map"}>
+                  <NavItem eventKey={2}>Map</NavItem>
+                </LinkContainer>
+              </Nav>
+              <Nav pullRight>
                 <LinkContainer to={"/nli/"} onClick={logOut}>
                   <NavItem eventKey={2}>LogOut</NavItem>
                 </LinkContainer>

@@ -10,7 +10,6 @@ class Dashboard extends Component {
   render() {
     return (
       <div>
-        You are logged.
       </div>
     );
   }
