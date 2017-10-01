@@ -1,10 +1,14 @@
 import { authStore } from "../stores/authStore.jsx";
 
-function isLogged() {
+const isLogged = () => {
   if(authStore.getState().jwt !== "")
     return true;
   return false;
 }
 
+const logOut = () => {
+  if(authStore.getState().jwt !== "")
+    authStore.dispatch({type: "", jwt: ""});
+}
 
-export default isLogged;
+export {isLogged, logOut};

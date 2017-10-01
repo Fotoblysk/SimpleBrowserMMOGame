@@ -1,15 +1,10 @@
 import React, { Component } from "react";
-import isLogged from "../func/LoginTools.jsx";
 import { withRouter } from "react-router";
-import PropTypes from "prop-types";
 
 class Dashboard extends Component {
 
   constructor(props) {
     super(props);
-    if(!isLogged()){
-      this.props.history.push("/login");
-    }
   }
 
   render() {
@@ -21,8 +16,5 @@ class Dashboard extends Component {
   }
 }
 
-Dashboard.propTypes = {
-  history: PropTypes.object.isRequired,
-};
 
 export default withRouter(Dashboard);
