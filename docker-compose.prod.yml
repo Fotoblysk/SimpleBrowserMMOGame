@@ -43,8 +43,6 @@ services:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
             - "9200:9200"
-    networks:
-      - esnet
 
 #uncoment for more nodes
 #  elasticsearch2:
@@ -61,8 +59,6 @@ services:
 #    #    mem_limit: 1G 
 #    volumes:
 #      - esdata2:/usr/share/elasticsearch/data
-#    networks:
-#      - esnet
 
 volumes:
   esdata1:
@@ -71,5 +67,3 @@ volumes:
 #  esdata2:
 #    driver: local
 
-networks:
-  esnet:
