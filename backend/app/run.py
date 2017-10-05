@@ -2,6 +2,14 @@ from aiohttp import web
 from redis import Redis
 import json
 import jwt
+from elasticsearch import Elasticsearch
+import time
+time.sleep(60)
+es = Elasticsearch("elasticsearch1", http_auth=('elastic', 'changeme'))
+
+# ignore 400 cause by IndexAlreadyExistsException when creating an index
+es.indices.create(index='map', ignore=400)
+es.indices.create(index='players', ignore=400)
 
 redis = Redis(host='redis', port=6379)
 
@@ -17,15 +25,17 @@ async def login(request):
     password = data["password"]
     print("login: " + login)
     print("password: " + password)
-    redisRaw = redis.get("CRED:user:" + login)
-    if redisRaw is None:
+    esResponse = es.get(index="players", doc_type="user_data", id=login,
+                        ignore=404)
+    print(esResponse)
+
+    if esResponse['found'] is False:
         return web.json_response(data={"status": "No"})
-    redisData = json.loads(redisRaw.decode())
-    dataPassword = redisData['password']
-    print("redisRaw" + str(redisData))
+
+    dataPassword = esResponse['_source']['password']
 
     if password == dataPassword:
-        tocken = jwt.encode(data, secret, algorithm='HS256')
+        tocken = jwt.encode({"login": login}, secret, algorithm='HS256')
         print(tocken)
         return web.json_response(
             data={"status": "Ok", "tocken": tocken.decode()}
@@ -44,6 +54,7 @@ async def register(request):
     userData = json.dumps({"password": password,
                            "email": email})
     redis.set("CRED:user:" + login, userData)
+    es.index(index="players", doc_type="user_data", id=login, body=userData)
     return web.Response(text="Ok")
 
 

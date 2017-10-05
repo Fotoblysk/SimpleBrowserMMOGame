@@ -11,10 +11,15 @@ services:
             - "80"
     volumes:
             - ./frontend/app:/app
+    depends_on:
+      - "backend"
   backend:
     build: ./backend
     expose:
             - "8080"
+    depends_on:
+      - "redis"
+      - "elasticsearch1"
     volumes:
             - ./backend/app:/app
   nginx:
@@ -24,6 +29,8 @@ services:
         - backend:backend
     ports:
         - "80:80"
+    depends_on:
+      - "frontend"
 
   redis:
     image: "redis:alpine"
@@ -43,8 +50,8 @@ services:
       - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
     ports:
             - "9200:9200"
-    networks:
-      - esnet
+#    networks:
+#      - esnet
 
 #uncoment for more nodes
 #  elasticsearch2:
@@ -69,5 +76,5 @@ volumes:
 #  esdata2:
 #    driver: local
 
-networks:
-  esnet:
+#networks:
+        #  esnet:
