@@ -1,5 +1,9 @@
 version: '2'
 services:
+  plugin_es:
+    image: mobz/elasticsearch-head:5
+    ports:
+      - "9100:9100"
   frontend:
     build: ./frontend
     env_file: ./frontend/config.env
@@ -7,10 +11,15 @@ services:
             - "80"
     volumes:
             - ./frontend/app:/app
+    depends_on:
+      - "backend"
   backend:
     build: ./backend
     expose:
             - "8080"
+    depends_on:
+      - "redis"
+      - "elasticsearch1"
     volumes:
             - ./backend/app:/app
   nginx:
@@ -20,6 +29,52 @@ services:
         - backend:backend
     ports:
         - "80:80"
+    depends_on:
+      - "frontend"
 
   redis:
     image: "redis:alpine"
+
+  elasticsearch1:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.2
+    container_name: elasticsearch1
+    environment:
+      - cluster.name=docker-cluster
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    volumes:
+      - esdata1:/usr/share/elasticsearch/data
+      - ./elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+    ports:
+            - "9200:9200"
+#    networks:
+#      - esnet
+
+#uncoment for more nodes
+#  elasticsearch2:
+#    image: docker.elastic.co/elasticsearch/elasticsearch:5.6.2
+#    environment:
+#      - cluster.name=docker-cluster
+#      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+#      - "discovery.zen.ping.unicast.hosts=elasticsearch1"
+#    ulimits:
+#      memlock:
+#        soft: -1
+#        hard: -1
+#    volumes:
+#      - esdata2:/usr/share/elasticsearch/data
+#    networks:
+#      - esnet
+
+volumes:
+  esdata1:
+    driver: local
+#uncoment for more nodes
+#  esdata2:
+#    driver: local
+
+#networks:
+        #  esnet:
