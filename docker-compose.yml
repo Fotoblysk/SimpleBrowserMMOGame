@@ -1,5 +1,9 @@
 version: '2'
 services:
+  cpp-engine:
+    build: ./cpp-engine
+    volumes: 
+      - ./cpp-engine/app:/app
   plugin_es:
     image: mobz/elasticsearch-head:5
     ports:
