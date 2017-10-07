@@ -1,5 +1,9 @@
 version: '2'
 services:
+  plugin_es:
+    image: mobz/elasticsearch-head:5
+    ports:
+      - "9100:9100"
   frontend:
     build: 
       context: ./frontend
