@@ -1,11 +1,32 @@
 import React, { Component } from "react";
 import { Col, Row } from "react-bootstrap"; 
 import MapElement from "./MapElement.jsx";
+import { authStore } from "../stores/authStore.jsx";
+
 class SmallMap extends Component {
   constructor(props) {
     super(props);
     let elements = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     this.state={elements: elements};
+    this.getMap();
+  }
+
+  getMap = () => {
+    fetch("/api/smallmap", {
+      method: "POST",
+      headers: {
+        "Accept": "application/json",
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        tocken:  authStore.getState().jwt
+      })
+    }).then( (response) => {
+      return response.json()
+    }).then( (response) => {
+      console.log(response)
+    });
+
   }
 
   render() {
